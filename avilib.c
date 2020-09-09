@@ -308,11 +308,11 @@ void AVI_set_video(avi_t *AVI, int width, int height, double fps, char *compress
    avi_update_header(AVI);
 }
 
-void AVI_set_audio(avi_t *AVI, int channels, long rate, int bits, int format, long mp3rate)
+int AVI_set_audio(avi_t *AVI, int channels, long rate, int bits, int format, long mp3rate)
 {
    /* may only be called if file is open for writing */
 
-   if(AVI->mode==AVI_MODE_READ) return;
+   if(AVI->mode==AVI_MODE_READ) return -1;
 
    //inc audio tracks
    AVI->aptr=AVI->anum;
@@ -330,6 +330,7 @@ void AVI_set_audio(avi_t *AVI, int channels, long rate, int bits, int format, lo
    AVI->track[AVI->aptr].mp3rate = mp3rate;
 
    avi_update_header(AVI);
+   return 0;
 }
 
 #define OUT4CC(s) \

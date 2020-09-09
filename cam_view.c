@@ -38,7 +38,7 @@
 #include <time.h>
 #include <sys/time.h>
 #include <signal.h>
-#include <X11/Xlib.h>
+//#include <X11/Xlib.h>
 #include "v4l2uvc.h"
 #include "utils.h"
 #include "color.h"
